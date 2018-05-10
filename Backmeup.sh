@@ -81,24 +81,41 @@ Menu()
 Simple_Backup()
 {
   cd ~
-  sudo 7zr u -up0q3r2x2y2z1w2 /home/Backup/user-home-folder-backup.7z `pwd`
+  working_dir=`pwd`
+  echo $working_dir
+  dir='/home/Backup/'
+  if [ -d "$dir" ]; then
+     sudo tar -cvpf /home/Backup/user-home-folder-backup.tar $working_dir # --directory= `pwd` --exclude=proc --exclude=sys --exclude=dev/pts --exclude=backups
+     sudo 7zr u -up0q3r2x2y2z1w2 /home/Backup/user-home-folder-backup.7z /home/Backup/user-home-folder-backup.tar
+     sudo rm -rf /home/Backup/user-home-folder-backup.tar
+  fi
+
+  if [ ! -d "$dir" ]; then
+      sudo mkdir /home/Backup/
+      sudo tar -cvpf /home/Backup/user-home-folder-backup.tar $working_dir # --directory= `pwd` --exclude=proc --exclude=sys --exclude=dev/pts --exclude=backups
+      sudo 7zr u -up0q3r2x2y2z1w2 /home/Backup/user-home-folder-backup.7z /home/Backup/user-home-folder-backup.tar
+      sudo rm -rf /home/Backup/user-home-folder-backup.tar
+  fi
 }
 
 Simple_Backup_Two()
 {
   echo "Please input the path to the folder you want to backup without the last /
   Ie, /home/username
-  " 
-  
+  "
+
   read to_back_up
 
-  echo "Please input the path where I should place the backed up folder without the last / 
-  Ie, /media/my-user-name/backuplocation 
-  " 
-  
+  echo "Please input the path where I should place the backed up folder without the last /
+  Ie, /media/my-user-name/backuplocation
+  "
+
   read save_location
 
-  7zr u -up0q3r2x2y2z1w2 $save_location"/Backup/home-folder-backup.7z" $to_back_up
+  sudo mkdir $save_location"/Backup/"
+  sudo tar -cvpf $save_location"/Backup/user-home-folder-backup.tar" $to_back_up
+  7zr u -up0q3r2x2y2z1w2 $save_location"/Backup/user-home-folder-backup.7z" $save_location"/Backup/user-home-folder-backup.tar"
+  # 7zr u -up0q3r2x2y2z1w2 $save_location"/Backup/user-home-folder-backup.7z" $to_back_up
 }
 
 Menu
