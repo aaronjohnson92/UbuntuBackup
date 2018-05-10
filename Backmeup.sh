@@ -91,14 +91,14 @@ Simple_Backup()
   echo $working_dir
   dir='/home/Backup/'
   if [ -d "$dir" ]; then
-     sudo tar -cvpf /home/Backup/user-home-folder-backup.tar $working_dir # --directory= `pwd` --exclude=proc --exclude=sys --exclude=dev/pts --exclude=backups
+     sudo tar -cvpf /home/Backup/user-home-folder-backup.tar $working_dir
      sudo 7zr u -up0q3r2x2y2z1w2 /home/Backup/user-home-folder-backup.7z /home/Backup/user-home-folder-backup.tar
      sudo rm -rf /home/Backup/user-home-folder-backup.tar
   fi
 
   if [ ! -d "$dir" ]; then
       sudo mkdir /home/Backup/
-      sudo tar -cvpf /home/Backup/user-home-folder-backup.tar $working_dir # --directory= `pwd` --exclude=proc --exclude=sys --exclude=dev/pts --exclude=backups
+      sudo tar -cvpf /home/Backup/user-home-folder-backup.tar $working_dir
       sudo 7zr u -up0q3r2x2y2z1w2 /home/Backup/user-home-folder-backup.7z /home/Backup/user-home-folder-backup.tar
       sudo rm -rf /home/Backup/user-home-folder-backup.tar
   fi
@@ -121,7 +121,6 @@ Simple_Backup_Two()
   sudo mkdir $save_location"/Backup/"
   sudo tar -cvpf $save_location"/Backup/user-home-folder-backup.tar" $to_back_up
   7zr u -up0q3r2x2y2z1w2 $save_location"/Backup/user-home-folder-backup.7z" $save_location"/Backup/user-home-folder-backup.tar"
-  # 7zr u -up0q3r2x2y2z1w2 $save_location"/Backup/user-home-folder-backup.7z" $to_back_up
 }
 
 Menu
