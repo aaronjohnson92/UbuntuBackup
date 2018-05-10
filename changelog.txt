@@ -1,2 +1,5 @@
---Added chekcs to ensure if /home/Backup/ directory exists it's not overwritten
---Force delete tar file after p7zip runs
+-- Added chekcs to ensure if /home/Backup/ directory exists it's not overwritten.
+
+-- Force delete tar file after p7zip runs.
+
+-- Added check to ensure user does not (and cannot) run this program as root.
