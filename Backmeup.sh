@@ -3,6 +3,12 @@
 # Home Folder - Backup - Restore point: 2018-05-07
 Menu()
 {
+
+    if [ $(id -u) = 0 ]; then
+        echo 'Do not run as root.'
+        exit 1
+    fi
+
     echo 'Please select from the following options: '
     printf "    1: Backs up /home/ folder.
     2: Backs up the supplied folder to a supplied path.
