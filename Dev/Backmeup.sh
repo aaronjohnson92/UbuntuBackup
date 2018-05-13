@@ -269,23 +269,27 @@ Create_Cron_Job()
     read -p "Well to the crontab job creation setup. Would you like these
              results to be emailed to you? (y\n): " choice
     if [ $choice = 'y' -o $choice = 'Y' ]; then
-        read -p "Enter valid email address: " -p email
+        echo "Enter valid email address: "
+        read email
         test_bool='0'
-        while [ $test_bool = '0' ]; then
-            read -p "Is this your email(y\n): "$email verify
+        while [ $test_bool = '0' ]; do
+            echo " Is this your email(y/n): " $email
+            read verify
             if [ $verify = 'y' -o $verify = 'Y' ]; then
-                $test_bol='1'
+                test_bool='1'
             elif [ $verify = 'n' -o $verify = 'N' ]; then
-                read -p "Enter valid email address: " -p email
+                echo "Enter valid email address: "
+                read email
             else
                 echo "invalid option, try again."
             fi
+        done
     elif [ $choice = 'n' -o $choice = 'N' ]; then
         echo "Not implemented yet"
     else
         echo "Invalid option, try again."
         Create_Cron_Job
-    fi 
+    fi
 }
 
 Menu
