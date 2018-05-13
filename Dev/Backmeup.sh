@@ -11,7 +11,7 @@ Menu()
 
     echo 'Please select from the following options: '
     printf "    1: Backs up /home/ folder.
-    2: Backs up the supplied folder to a supplied path.
+    2: Backs up the supplied folder to a supplied path. This essentially functions asa full backup if done on a folder.
     3: Select a backup type, location, and automate with a cron job.
     4:
     5:
@@ -99,18 +99,12 @@ Simple_Backup()
   echo $working_dir
   dir='/home/Backup/'
   if [ -d "$dir" ]; then
-     # sudo tar -cvpf /home/Backup/user-home-folder-backup.tar $working_dir
-     # sudo 7zr u -up0q3r2x2y2z1w2 /home/Backup/user-home-folder-backup.7z /home/Backup/user-home-folder-backup.tar
      Automated_Full_Home_Folder_Backup
-     # sudo rm -rf /home/Backup/user-home-folder-backup.tar
   fi
 
   if [ ! -d "$dir" ]; then
       sudo mkdir /home/Backup/
       Automated_Full_Home_Folder_Backup
-      # sudo tar -cvpf /home/Backup/user-home-folder-backup.tar $working_dir
-      # sudo 7zr u -up0q3r2x2y2z1w2 /home/Backup/user-home-folder-backup.7z /home/Backup/user-home-folder-backup.tar
-      # sudo rm -rf /home/Backup/user-home-folder-backup.tar
   fi
 }
 
@@ -261,6 +255,55 @@ Automated_Full_Home_Folder_Backup()
   sudo 7zr u -up0q3r2x2y2z1w2 $zip_file $tar_file
   sudo rm -rf /home/Backup/user-home-folder-backup.tar
   echo "Full backup completed on: " $date " at: " $time
+}
+
+Custom_Full_Home_Folder_Backup()
+{
+
+    date=`date +%Y-%m-%d`
+    time=`date +%T`
+
+    echo "Please input the path to the folder you want to backup without the last /
+    Ie, /home/username
+    "
+    read to_backup
+
+    echo "Please input the path where I should place the backed up folder without the last /
+    Ie, /media/my-user-name/backuplocation
+    "
+    read save_location
+
+
+    read -p "Would you like to name this file?: (y/n)" inp
+
+    if [ ! -d "$save_location" ]; then
+        sudo mkdir $save_location
+        if [ inp = 'y' -o inp = 'Y' ]; then
+            read -p "Enter file name: " file_name
+            sudo tar -cvpzf $save_location"/"$file_name".tar" $to_backup
+            sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/"$file_name".7z" $to_backup
+            sudo rm -rf $save_location"/"$file_name".tar"
+            echo "Full backup completed on: " $date " at: " $time
+        elif [ inp = 'n' -o inp = 'N' ]; then
+            sudo tar -cvpzf $save_location"/Backup_Data.tar" $to_backup
+            sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/Backup_Data.7z" $to_backup
+            sudo rm -rf $save_location"/Backup_Data.tar"
+            echo "Full backup completed on: " $date " at: " $time
+        fi
+    elif [ -d "$save_location" ]; then
+        if [ inp = 'y' -o inp = 'Y' ]; then
+            read -p "Enter file name: " file_name
+            sudo tar -cvpzf $save_location"/"$file_name".tar" $to_backup
+            sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/"$file_name".7z" $to_backup
+            sudo rm -rf $save_location"/"$file_name".tar"
+            echo "Full backup completed on: " $date " at: " $time
+        elif [ inp = 'n' -o inp = 'N' ]; then
+            sudo tar -cvpzf $save_location"/Backup_Data.tar" $to_backup
+            sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/Backup_Data.7z" $to_backup
+            sudo rm -rf $save_location"/Backup_Data.tar"
+            echo "Full backup completed on: " $date " at: " $time
+        fi
+    fi
 }
 
 Menu
