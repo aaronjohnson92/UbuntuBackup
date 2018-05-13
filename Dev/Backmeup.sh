@@ -110,53 +110,7 @@ Simple_Backup()
 
 Simple_Backup_Two()
 {
-  dir='/home/Backup/'
-
-  echo "Please input the path to the folder you want to backup without the last /
-  Ie, /home/username
-  "
-
-  read to_back_up
-
-  echo "Please input the path where I should place the backed up folder without the last /
-  Ie, /media/my-user-name/backuplocation
-  "
-
-  read save_location
-
-
-  read -p "Would you like to name this file?: (y/n)" inp
-
-  if [ -d "$dir" ]; then
-      if ! [ $inp = 'y' -o $inp = 'Y' ]; then
-          sudo mkdir $save_location"/Backup/"
-          sudo tar -cvpf $save_location"/Backup/user-home-folder-backup.tar" $to_back_up
-          sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/Backup/user-home-folder-backup.7z" $save_location"/Backup/user-home-folder-backup.tar"
-          sudo rm -rf $save_location"/"$file_name".tar"
-      elif [ $inp = 'y' -o $inp = 'Y' ]; then
-        echo "Enter the name you'd like to give the file"
-        read file_name
-        sudo tar -cvpf $save_location"/"$file_name".tar" $to_back_up
-        sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/"$file_name".7z" $save_location"/"$file_name".tar"
-        sudo rm -rf $save_location"/"$file_name".tar"
-      fi
-  elif [ ! -d "$dir" ]; then
-      if ! [ $inp = 'y' -o $inp = 'Y' ]; then
-          sudo mkdir $save_location"/Backup/"
-          sudo tar -cvpf $save_location"/Backup/user-home-folder-backup.tar" $to_back_up
-          sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/Backup/user-home-folder-backup.7z" $save_location"/Backup/user-home-folder-backup.tar"
-          sudo rm -rf $save_location"/"$file_name".tar"
-      elif [ $inp = 'y' -o $inp = 'Y' ]; then
-        echo "Enter the name you'd like to give the file"
-        read file_name
-        sudo tar -cvpf $save_location"/"$file_name".tar" $to_back_up
-        sudo 7zr u -up0q3r2x2y2z1w2 $save_location'/'$file_name".7z" $save_location'/'$file_name".tar"
-        sudo rm -rf $save_location"/"$file_name".tar"
-      fi
-  fi
-  # Function backs eerything up like it should but it doesn't delete the default .tar
-  # When you don't name the file
-  # When you do name the file it deletes the tar and the folder generated but saves teh .7z in the working directory
+    Custom_Full_Home_Folder_Backup
 }
 
 Set_Restore_Point() # FINISH
