@@ -129,37 +129,37 @@ Set_Restore_Point() # FINISH
     read -p "Choice: " user_choice
     case $user_choice in
         1)
-            echo "Option 1"
+            Create_Cron_Job
             ;;
 
         2)
-            echo "Option 2"
+            Create_Cron_Job
             ;;
 
         3)
-            echo "Option 3"
+            Create_Cron_Job
             ;;
 
         4)
-            echo "Option 4"
+            Create_Cron_Job
             ;;
 
          5)
-             echo "Option 5"
+             Create_Cron_Job
              ;;
 
          6)
-             echo "Option 6"
+             Create_Cron_Job
              ;;
 
          7)
-             echo "Option 7"
+             Create_Cron_Job
              ;;
          8)
-             echo "Option 8"
+             Create_Cron_Job
              ;;
          9)
-             echo "Option 9"
+             Create_Cron_Job
              ;;
         *)
            echo "Invalid Option, try again (y/n) "
@@ -273,14 +273,19 @@ Create_Cron_Job()
         test_bool='0'
         while [ $test_bool = '0' ]; then
             read -p "Is this your email(y\n): "$email verify
-            if [ $verify = 'y' -o $verify = 'Y' ]; then 
+            if [ $verify = 'y' -o $verify = 'Y' ]; then
                 $test_bol='1'
             elif [ $verify = 'n' -o $verify = 'N' ]; then
                 read -p "Enter valid email address: " -p email
             else
                 echo "invalid option, try again."
             fi
-    fi
+    elif [ $choice = 'n' -o $choice = 'N' ]; then
+        echo "Not implemented yet"
+    else
+        echo "Invalid option, try again."
+        Create_Cron_Job
+    fi 
 }
 
 Menu
