@@ -228,7 +228,8 @@ Custom_Full_Home_Folder_Backup()
     read save_location
 
 
-    read -p "Would you like to name this file?: (y/n)" inp
+    echo "Would you like to name this file?: (y/n)"
+    read inp
 
     if [ ! -d "$save_location" ]; then
         sudo mkdir $save_location
