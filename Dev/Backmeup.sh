@@ -228,11 +228,10 @@ Custom_Full_Home_Folder_Backup()
     read save_location
 
 
-    echo "Would you like to name this file?: (y/n)"
-    read inp
-
     if [ ! -d "$save_location" ]; then
         sudo mkdir $save_location
+        echo "Would you like to name this file?: (y/n)"
+        read inp
         if [ inp = 'y' -o inp = 'Y' ]; then
             echo "Enter file name: "
             read file_name
@@ -247,6 +246,8 @@ Custom_Full_Home_Folder_Backup()
             echo "Full backup completed on: " $date " at: " $time
         fi
     elif [ -d "$save_location" ]; then
+        echo "Would you like to name this file?: (y/n)"
+        read inp
         if [ inp = 'y' -o inp = 'Y' ]; then
             echo "Enter file name: "
             read file_name
