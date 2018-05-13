@@ -122,45 +122,60 @@ Set_Restore_Point() # FINISH
     4) Weekly: Incremental Backup
     5) Weekly: Full Backup
     6) Weekly Differential Backup
-    7) Custom: Incremental Backup
-    8) Custom: Full Backup
-    9) Custom: Differential Backup"
-
+    7) Monthly: Incremental Backup
+    8) Monthly: Full Backup
+    9) Monthly: Differential Backup
+    10) Custom: Incremental Backup
+    11 Custom: Full Backup
+    12 Custom: Differential Backup"
     read -p "Choice: " user_choice
     case $user_choice in
         1)
-            Create_Cron_Job
+            Create_Daily_Cron_Job
             ;;
 
         2)
-            Create_Cron_Job
+            Create_Daily_Cron_Job
             ;;
 
         3)
-            Create_Cron_Job
+            Create_Daily_Cron_Job
             ;;
 
         4)
-            Create_Cron_Job
+            Create_Weekly_Cron_Job
             ;;
 
          5)
-             Create_Cron_Job
+             Create_Weekly_Cron_Job
              ;;
 
          6)
-             Create_Cron_Job
+             Create_Weekly_Cron_Job
              ;;
 
          7)
-             Create_Cron_Job
+             Create_Monthly_Cron_Job
              ;;
          8)
-             Create_Cron_Job
+             Create_Monthly_Cron_Job
              ;;
          9)
-             Create_Cron_Job
+             Create_Monthly_Cron_Job
              ;;
+
+         10)
+             Create_Custom_Cron_Job
+             ;;
+
+        11)
+            Create_Custom_Cron_Job
+            ;;
+
+        12)
+            Create_Custom_Cron_Job
+            ;;
+
         *)
            echo "Invalid Option, try again (y/n) "
            read answer
@@ -264,7 +279,22 @@ Custom_Full_Home_Folder_Backup()
     fi
 }
 
-Create_Cron_Job()
+Create_Weekly_Cron_Job()
+{
+  echo "None"
+}
+
+Create_Monthly_Cron_Job()
+{
+  echo "None"
+}
+
+Create_Custom_Cron_Job()
+{
+  echo "None"
+}
+
+Create_Daily_Cron_Job()
 {
     read -p "Well to the crontab job creation setup. Would you like these
              results to be emailed to you? (y\n): " choice
@@ -284,6 +314,9 @@ Create_Cron_Job()
                 echo "invalid option, try again."
             fi
         done
+        echo "Enter the time you want this job to run at: "
+        read _time
+
     elif [ $choice = 'n' -o $choice = 'N' ]; then
         echo "Not implemented yet"
     else
