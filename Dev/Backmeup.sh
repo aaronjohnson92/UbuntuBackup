@@ -234,7 +234,8 @@ Custom_Full_Home_Folder_Backup()
     if [ ! -d "$save_location" ]; then
         sudo mkdir $save_location
         if [ inp = 'y' -o inp = 'Y' ]; then
-            read -p "Enter file name: " file_name
+            echo "Enter file name: "
+            read file_name
             sudo tar -cvpzf $save_location"/"$file_name".tar" $to_backup
             sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/"$file_name".7z" $to_backup
             sudo rm -rf $save_location"/"$file_name".tar"
@@ -247,7 +248,8 @@ Custom_Full_Home_Folder_Backup()
         fi
     elif [ -d "$save_location" ]; then
         if [ inp = 'y' -o inp = 'Y' ]; then
-            read -p "Enter file name: " file_name
+            echo "Enter file name: "
+            read file_name
             sudo tar -cvpzf $save_location"/"$file_name".tar" $to_backup
             sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/"$file_name".7z" $to_backup
             sudo rm -rf $save_location"/"$file_name".tar"
