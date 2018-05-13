@@ -264,4 +264,23 @@ Custom_Full_Home_Folder_Backup()
     fi
 }
 
+Create_Cron_Job()
+{
+    read -p "Well to the crontab job creation setup. Would you like these
+             results to be emailed to you? (y\n): " choice
+    if [ $choice = 'y' -o $choice = 'Y' ]; then
+        read -p "Enter valid email address: " -p email
+        test_bool='0'
+        while [ $test_bool = '0' ]; then
+            read -p "Is this your email(y\n): "$email verify
+            if [ $verify = 'y' -o $verify = 'Y' ]; then 
+                $test_bol='1'
+            elif [ $verify = 'n' -o $verify = 'N' ]; then
+                read -p "Enter valid email address: " -p email
+            else
+                echo "invalid option, try again."
+            fi
+    fi
+}
+
 Menu
