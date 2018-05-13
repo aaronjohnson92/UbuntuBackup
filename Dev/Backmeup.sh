@@ -232,14 +232,14 @@ Custom_Full_Home_Folder_Backup()
         sudo mkdir $save_location
         echo "Would you like to name this file?: (y/n)"
         read inp
-        if [ inp = 'y' -o inp = 'Y' ]; then
+        if [ $inp = 'y' -o $inp = 'Y' ]; then
             echo "Enter file name: "
             read file_name
             sudo tar -cvpzf $save_location"/"$file_name".tar" $to_backup
             sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/"$file_name".7z" $to_backup
             sudo rm -rf $save_location"/"$file_name".tar"
             echo "Full backup completed on: " $date " at: " $time
-        elif [ inp = 'n' -o inp = 'N' ]; then
+        elif [ $inp = 'n' -o $inp = 'N' ]; then
             sudo tar -cvpzf $save_location"/Backup_Data.tar" $to_backup
             sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/Backup_Data.7z" $to_backup
             sudo rm -rf $save_location"/Backup_Data.tar"
@@ -248,14 +248,14 @@ Custom_Full_Home_Folder_Backup()
     elif [ -d "$save_location" ]; then
         echo "Would you like to name this file?: (y/n)"
         read inp
-        if [ inp = 'y' -o inp = 'Y' ]; then
+        if [ $inp = 'y' -o $inp = 'Y' ]; then
             echo "Enter file name: "
             read file_name
             sudo tar -cvpzf $save_location"/"$file_name".tar" $to_backup
             sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/"$file_name".7z" $to_backup
             sudo rm -rf $save_location"/"$file_name".tar"
             echo "Full backup completed on: " $date " at: " $time
-        elif [ inp = 'n' -o inp = 'N' ]; then
+        elif [ $inp = 'n' -o $inp = 'N' ]; then
             sudo tar -cvpzf $save_location"/Backup_Data.tar" $to_backup
             sudo 7zr u -up0q3r2x2y2z1w2 $save_location"/Backup_Data.7z" $to_backup
             sudo rm -rf $save_location"/Backup_Data.tar"
