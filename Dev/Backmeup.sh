@@ -259,7 +259,7 @@ Automated_Full_Home_Folder_Backup()
   time=`date +%T`
   sudo tar -cvpzf $tar_file --one-file-system $working_dir
   sudo 7zr u -up0q3r2x2y2z1w2 $zip_file $tar_file
-  # sudo rm -rf /home/Backup/user-home-folder-backup.tar
+  sudo rm -rf /home/Backup/user-home-folder-backup.tar
   echo "Full backup completed on: " $date " at: " $time
 }
 
