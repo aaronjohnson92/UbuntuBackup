@@ -1,0 +1,21 @@
+-- Added checks to ensure if /home/Backup/ directory exists it's not overwritten.
+
+-- Force delete tar file after p7zip runs.
+
+-- Added check to ensure user does not (and cannot) run this program as root.
+
+-- Fixed spelling error in changelog and in readme file(s)
+
+-- Added Daily, weekly, monthly, and custom Incremental, Differential, Full backup options
+
+-- Beginning implementation of cron job back ups.
+
+-- Added date/time terminal output that notify the user when the last backup occurred
+
+-- Changed the case system in the restore point creation menu by breaking it down
+   into Daily, Weekly, Monthly, and Custom. These apply to when the cron jobs run.
+   The user will setup the job up (with instructions) and then choose the back up
+   type.
+
+-- Added if statements in the Create_Daily_Cron_Job function to ensure the
+   input provided by the user checks for and ensures option validation.
